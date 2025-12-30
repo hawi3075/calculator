@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(135deg, #f4f7ff 0%, #e0e7ff 100%); /* Animated feel background */
+    background: linear-gradient(135deg, #f4f7ff 0%, #e0e7ff 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,18 +10,15 @@ body {
 
 .calculator {
     display: grid;
-    grid-template-columns: repeat(4, 80px);
-    grid-template-rows: minmax(120px, auto) repeat(5, 80px);
+    grid-template-columns: repeat(5, 70px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 70px);
     gap: 12px;
     background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px); /* Glassmorphism effect */
+    backdrop-filter: blur(10px);
     padding: 25px;
     border-radius: 30px;
-    /* Deep Shadow for 3D effect */
-    box-shadow: 0 20px 50px rgba(37, 99, 235, 0.1), 
-                0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 20px 50px rgba(37, 99, 235, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    /* Entrance Animation */
     animation: slideUp 0.6s ease-out;
 }
 
@@ -44,26 +41,30 @@ body {
 }
 
 #current-operand {
-    color: #2563EB; /* Matching your primary theme */
+    color: #2563EB;
     font-size: 2.2rem;
     font-weight: 700;
-    transition: all 0.2s ease;
+    transition: all 0.1s ease;
+}
+
+#previous-operand {
+    color: #64748b;
+    font-size: 1.1rem;
+    min-height: 1.2rem;
 }
 
 button {
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 600;
     border: none;
     border-radius: 16px;
     background-color: white;
     color: #334155;
-    /* Subtle button shadow */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Interaction Animations */
 button:hover {
     background-color: #f8fafc;
     transform: translateY(-3px);
@@ -71,21 +72,21 @@ button:hover {
 }
 
 button:active {
-    transform: translateY(0);
     scale: 0.95;
 }
 
-.operator { 
+.operator {
     background-color: rgba(37, 99, 235, 0.05);
-    color: #2563EB; 
+    color: #2563EB;
 }
 
-.equals { 
+.control {
+    color: #ef4444;
+}
+
+.equals {
+    grid-column: 1 / -1;
     background: linear-gradient(135deg, #2563EB, #1d4ed8);
     color: white;
     box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
-}
-
-.equals:hover {
-    box-shadow: 0 12px 25px rgba(37, 99, 235, 0.4);
 }

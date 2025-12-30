@@ -1,57 +1,91 @@
 body {
-    background: #F4F7FF; /* Matches your Note App background */
+    background: linear-gradient(135deg, #f4f7ff 0%, #e0e7ff 100%); /* Animated feel background */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 .calculator {
     display: grid;
     grid-template-columns: repeat(4, 80px);
     grid-template-rows: minmax(120px, auto) repeat(5, 80px);
-    gap: 10px;
-    background: white;
-    padding: 20px;
-    border-radius: 24px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px); /* Glassmorphism effect */
+    padding: 25px;
+    border-radius: 30px;
+    /* Deep Shadow for 3D effect */
+    box-shadow: 0 20px 50px rgba(37, 99, 235, 0.1), 
+                0 5px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    /* Entrance Animation */
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .display {
     grid-column: 1 / -1;
-    background: #F8FAFC;
+    background: rgba(248, 250, 252, 0.5);
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    justify-content: space-around;
-    padding: 15px;
-    word-wrap: break-word;
-    word-break: break-all;
-    border-radius: 12px;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 18px;
+    margin-bottom: 10px;
+    border: 1px inset rgba(0,0,0,0.02);
 }
 
 #current-operand {
-    color: #2563EB; /* Blue color from your dashboard */
-    font-size: 2rem;
-    font-weight: bold;
+    color: #2563EB; /* Matching your primary theme */
+    font-size: 2.2rem;
+    font-weight: 700;
+    transition: all 0.2s ease;
 }
 
 button {
     cursor: pointer;
     font-size: 1.2rem;
+    font-weight: 600;
     border: none;
-    border-radius: 12px;
-    background-color: #F8FAFC;
+    border-radius: 16px;
+    background-color: white;
     color: #334155;
-    transition: 0.2s;
+    /* Subtle button shadow */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-button:hover { background-color: #E2E8F0; }
+/* Interaction Animations */
+button:hover {
+    background-color: #f8fafc;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px rgba(37, 99, 235, 0.1);
+}
 
-.operator { color: #2563EB; font-weight: bold; }
-.control { color: #ef4444; }
-.equals { background-color: #2563EB; color: white; }
-.equals:hover { background-color: #1d4ed8; }
-.span-two { grid-column: span 2; }
+button:active {
+    transform: translateY(0);
+    scale: 0.95;
+}
+
+.operator { 
+    background-color: rgba(37, 99, 235, 0.05);
+    color: #2563EB; 
+}
+
+.equals { 
+    background: linear-gradient(135deg, #2563EB, #1d4ed8);
+    color: white;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+}
+
+.equals:hover {
+    box-shadow: 0 12px 25px rgba(37, 99, 235, 0.4);
+}

@@ -8,6 +8,8 @@ const previousDisplay = document.getElementById('previous-operand');
 function updateDisplay() {
     currentDisplay.innerText = currentInput;
     previousDisplay.innerText = previousInput + (operator || "");
+    currentDisplay.style.transform = "scale(1.05)";
+    setTimeout(() => { currentDisplay.style.transform = "scale(1)"; }, 100);
 }
 
 function appendNumber(number) {
@@ -40,12 +42,28 @@ function compute() {
         case '-': computation = prev - current; break;
         case '×': computation = prev * current; break;
         case '÷': computation = prev / current; break;
+        case '^': computation = Math.pow(prev, current); break;
         default: return;
     }
 
     currentInput = computation.toString();
     operator = null;
     previousInput = '';
+    updateDisplay();
+}
+
+function calculateSquareRoot() {
+    const val = parseFloat(currentInput);
+    if (val < 0) {
+        currentInput = "Error";
+    } else {
+        currentInput = Math.sqrt(val).toString();
+    }
+    updateDisplay();
+}
+
+function calculatePercentage() {
+    currentInput = (parseFloat(currentInput) / 100).toString();
     updateDisplay();
 }
 

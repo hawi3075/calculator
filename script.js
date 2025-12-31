@@ -8,13 +8,10 @@ const previousDisplay = document.getElementById('previous-operand');
 function updateDisplay() {
     currentDisplay.innerText = currentInput;
     previousDisplay.innerText = previousInput + (operator || "");
-    currentDisplay.style.transform = "scale(1.05)";
-    setTimeout(() => { currentDisplay.style.transform = "scale(1)"; }, 100);
 }
 
 function appendNumber(number) {
-    if (number === '.' && currentInput.includes('.')) return;
-    if (currentInput === '0' && number !== '.') currentInput = number;
+    if (currentInput === '0') currentInput = number;
     else currentInput += number;
     updateDisplay();
 }
@@ -47,37 +44,27 @@ function compute() {
     updateDisplay();
 }
 
-function calculateSquareRoot() {
-    const val = parseFloat(currentInput);
-    currentInput = val < 0 ? "Error" : Math.sqrt(val).toString();
+// Scientific Logic
+function calculateSin() { currentInput = Math.sin(parseFloat(currentInput) * (Math.PI / 180)).toFixed(4); updateDisplay(); }
+function calculateCos() { currentInput = Math.cos(parseFloat(currentInput) * (Math.PI / 180)).toFixed(4); updateDisplay(); }
+function calculateTan() { currentInput = Math.tan(parseFloat(currentInput) * (Math.PI / 180)).toFixed(4); updateDisplay(); }
+
+function calculateLog() { currentInput = Math.log10(parseFloat(currentInput)).toFixed(4); updateDisplay(); }
+function calculateLn() { currentInput = Math.log(parseFloat(currentInput)).toFixed(4); updateDisplay(); }
+
+function calculateFactorial() {
+    let n = parseInt(currentInput);
+    if (n < 0) currentInput = "Error";
+    else {
+        let res = 1;
+        for (let i = 2; i <= n; i++) res *= i;
+        currentInput = res.toString();
+    }
     updateDisplay();
 }
 
-function calculatePercentage() {
-    currentInput = (parseFloat(currentInput) / 100).toString();
-    updateDisplay();
-}
+function calculateSquareRoot() { currentInput = Math.sqrt(parseFloat(currentInput)).toFixed(4); updateDisplay(); }
+function calculatePercentage() { currentInput = (parseFloat(currentInput) / 100).toString(); updateDisplay(); }
 
-function calculateLog() {
-    const val = parseFloat(currentInput);
-    currentInput = val <= 0 ? "Error" : Math.log10(val).toString();
-    updateDisplay();
-}
-
-function calculateLn() {
-    const val = parseFloat(currentInput);
-    currentInput = val <= 0 ? "Error" : Math.log(val).toString();
-    updateDisplay();
-}
-
-function clearDisplay() {
-    currentInput = '0';
-    previousInput = '';
-    operator = null;
-    updateDisplay();
-}
-
-function deleteNumber() {
-    currentInput = currentInput.slice(0, -1) || '0';
-    updateDisplay();
-}
+function clearDisplay() { currentInput = '0'; previousInput = ''; operator = null; updateDisplay(); }
+function deleteNumber() { currentInput = currentInput.slice(0, -1) || '0'; updateDisplay(); }

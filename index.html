@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Magic Calculator</title>
+    <title>Pro Magic Scientific</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="calculator">
         <div class="calculator-header">
-            <span>✨ Magic Calc</span>
+            <span>✨ Pro Scientific</span>
             <div class="window-controls">
                 <span class="dot red"></span>
                 <span class="dot yellow"></span>
@@ -20,29 +20,40 @@
             <div id="previous-operand"></div>
             <div id="current-operand">0</div>
         </div>
-        <button class="operator" onclick="calculateLog()">log</button>
-        <button class="operator" onclick="calculateLn()">ln</button>
+        
+        <button class="operator" onclick="calculateSin()">sin</button>
+        <button class="operator" onclick="calculateCos()">cos</button>
+        <button class="operator" onclick="calculateTan()">tan</button>
+        <button class="operator" onclick="appendNumber(Math.PI.toFixed(4))">π</button>
         <button class="control" onclick="clearDisplay()">AC</button>
         <button class="control" onclick="deleteNumber()">DEL</button>
-        <button class="operator" onclick="calculatePercentage()">%</button>
+        
+        <button class="operator" onclick="calculateLog()">log</button>
+        <button class="operator" onclick="calculateLn()">ln</button>
+        <button class="operator" onclick="calculateFactorial()">x!</button>
+        <button class="operator" onclick="appendNumber(Math.E.toFixed(4))">e</button>
         <button class="operator" onclick="calculateSquareRoot()">√</button>
         <button class="operator" onclick="chooseOperator('÷')">÷</button>
+        
         <button onclick="appendNumber('7')">7</button>
         <button onclick="appendNumber('8')">8</button>
         <button onclick="appendNumber('9')">9</button>
         <button class="operator" onclick="chooseOperator('^')">xʸ</button>
+        <button class="operator" onclick="calculatePercentage()">%</button>
         <button class="operator" onclick="chooseOperator('×')">×</button>
+        
         <button onclick="appendNumber('4')">4</button>
         <button onclick="appendNumber('5')">5</button>
         <button onclick="appendNumber('6')">6</button>
-        <button onclick="appendNumber('0')">0</button>
-        <button class="operator" onclick="chooseOperator('+')">+</button>
         <button onclick="appendNumber('1')">1</button>
         <button onclick="appendNumber('2')">2</button>
-        <button onclick="appendNumber('3')">3</button>
-        <button onclick="appendNumber('.')">.</button>
         <button class="operator" onclick="chooseOperator('-')">-</button>
-        <button class="span-all equals" onclick="compute()">=</button>
+        
+        <button onclick="appendNumber('3')">3</button>
+        <button onclick="appendNumber('0')">0</button>
+        <button onclick="appendNumber('.')">.</button>
+        <button class="operator" onclick="chooseOperator('+')">+</button>
+        <button class="span-two equals" onclick="compute()">=</button>
     </div>
     <script src="script.js"></script>
 </body>

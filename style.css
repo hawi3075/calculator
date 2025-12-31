@@ -11,7 +11,7 @@ body {
 .calculator {
     display: grid;
     grid-template-columns: repeat(5, 70px);
-    grid-template-rows: auto minmax(120px, auto) repeat(5, 70px);
+    grid-template-rows: auto minmax(100px, auto) repeat(5, 70px);
     gap: 12px;
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
@@ -32,24 +32,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 5px 5px 5px;
-    font-size: 0.9rem;
+    padding-bottom: 10px;
+    font-size: 0.85rem;
     font-weight: 700;
     color: #64748b;
-    letter-spacing: 0.5px;
 }
 
-.window-controls {
-    display: flex;
-    gap: 6px;
-}
-
-.dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-}
-
+.window-controls { display: flex; gap: 6px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; }
 .red { background: #ff5f56; }
 .yellow { background: #ffbd2e; }
 .green { background: #27c93f; }
@@ -64,56 +54,34 @@ body {
     padding: 20px;
     border-radius: 18px;
     margin-bottom: 5px;
-    border: 1px inset rgba(0,0,0,0.02);
 }
 
-#current-operand {
-    color: #2563EB;
-    font-size: 2.2rem;
-    font-weight: 700;
-    transition: all 0.1s ease;
-}
-
-#previous-operand {
-    color: #64748b;
-    font-size: 1.1rem;
-    min-height: 1.2rem;
-}
+#current-operand { color: #2563EB; font-size: 2rem; font-weight: 700; transition: transform 0.1s; }
+#previous-operand { color: #64748b; font-size: 1rem; min-height: 1.2rem; }
 
 button {
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
     border: none;
-    border-radius: 16px;
+    border-radius: 14px;
     background-color: white;
     color: #334155;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s ease;
 }
 
 button:hover {
     background-color: #f8fafc;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 15px rgba(37, 99, 235, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 12px rgba(37, 99, 235, 0.1);
 }
 
-button:active {
-    scale: 0.95;
-}
+button:active { transform: scale(0.95); }
 
-.operator {
-    background-color: rgba(37, 99, 235, 0.05);
-    color: #2563EB;
-}
-
-.control {
-    color: #ef4444;
-}
-
-.span-all {
-    grid-column: 1 / -1;
-}
+.operator { background-color: rgba(37, 99, 235, 0.05); color: #2563EB; }
+.control { color: #ef4444; }
+.span-three { grid-column: span 3; }
 
 .equals {
     background: linear-gradient(135deg, #2563EB, #1d4ed8);

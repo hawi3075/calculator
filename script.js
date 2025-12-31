@@ -14,11 +14,8 @@ function updateDisplay() {
 
 function appendNumber(number) {
     if (number === '.' && currentInput.includes('.')) return;
-    if (currentInput === '0' && number !== '.') {
-        currentInput = number;
-    } else {
-        currentInput += number;
-    }
+    if (currentInput === '0' && number !== '.') currentInput = number;
+    else currentInput += number;
     updateDisplay();
 }
 
@@ -36,7 +33,6 @@ function compute() {
     const prev = parseFloat(previousInput);
     const current = parseFloat(currentInput);
     if (isNaN(prev) || isNaN(current)) return;
-
     switch (operator) {
         case '+': computation = prev + current; break;
         case '-': computation = prev - current; break;
@@ -45,7 +41,6 @@ function compute() {
         case '^': computation = Math.pow(prev, current); break;
         default: return;
     }
-
     currentInput = computation.toString();
     operator = null;
     previousInput = '';
@@ -54,16 +49,24 @@ function compute() {
 
 function calculateSquareRoot() {
     const val = parseFloat(currentInput);
-    if (val < 0) {
-        currentInput = "Error";
-    } else {
-        currentInput = Math.sqrt(val).toString();
-    }
+    currentInput = val < 0 ? "Error" : Math.sqrt(val).toString();
     updateDisplay();
 }
 
 function calculatePercentage() {
     currentInput = (parseFloat(currentInput) / 100).toString();
+    updateDisplay();
+}
+
+function calculateLog() {
+    const val = parseFloat(currentInput);
+    currentInput = val <= 0 ? "Error" : Math.log10(val).toString();
+    updateDisplay();
+}
+
+function calculateLn() {
+    const val = parseFloat(currentInput);
+    currentInput = val <= 0 ? "Error" : Math.log(val).toString();
     updateDisplay();
 }
 
@@ -75,7 +78,6 @@ function clearDisplay() {
 }
 
 function deleteNumber() {
-    currentInput = currentInput.slice(0, -1);
-    if (currentInput === '') currentInput = '0';
+    currentInput = currentInput.slice(0, -1) || '0';
     updateDisplay();
 }
